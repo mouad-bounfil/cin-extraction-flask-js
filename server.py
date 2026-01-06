@@ -27,4 +27,4 @@ if __name__ == "__main__":
         f"Server is running on port {os.getenv('PORT')} ✅ in this link http://localhost:{os.getenv('PORT')}"
     )
 
-    app.run(debug=True, port=int(os.getenv("PORT")))
+    app.run(host="0.0.0.0", debug=True, port=int(os.getenv("PORT")))
