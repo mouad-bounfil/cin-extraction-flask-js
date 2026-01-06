@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .animated-gradient {
+        background: linear-gradient(-45deg, #f5f5f4, #e7e5e4, #d6d3d1, #e7e5e4);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      /* Mobile touch optimization */
+      @media (max-width: 768px) {
+        input,
+        select,
+        button {
+          font-size: 16px; /* Prevents zoom on iOS */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="app"
+      class="animated-gradient flex flex-col items-center justify-center min-h-screen py-4 sm:py-8 md:py-12 px-3 sm:px-4"
+    >
+      <form
+        id="application-form"
+        class="w-full max-w-2xl bg-white rounded-xl sm:rounded-2xl shadow-xl border border-stone-200 overflow-hidden"
+        onsubmit="validateForm(event)"
+      >
+        <!-- Header Section - Lighter Design -->
+        <div
+          class="bg-gradient-to-br from-stone-50 to-stone-100 p-4 sm:p-6 md:p-8 border-b border-stone-200"
+        >
+          <h1
+            class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 tracking-tight text-stone-900"
+          >
+            Job Application
+          </h1>
+          <p class="text-stone-600 text-xs sm:text-sm leading-relaxed">
+            Apply for this position by completing the form below. Please provide
+            your professional information and required skills. All submitted
+            information will be reviewed by our recruitment team.
+          </p>
+        </div>
+
+        <!-- Form Content -->
+        <div class="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-5 md:space-y-6">
+          <!-- Years of Experience -->
+          <div class="space-y-2">
+            <label for="exp" class="block text-sm font-semibold text-stone-900"
+              >Years of Experience</label
+            >
+            <input
+              id="exp"
+              type="number"
+              name="exp"
+              placeholder="e.g., 3"
+              required
+              min="0"
+              class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border-2 border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-transparent transition-all duration-200 placeholder:text-stone-400 hover:border-stone-300 text-stone-900"
+            />
+          </div>
+          <!-- Skills Section -->
+          <div class="space-y-2 sm:space-y-3">
+            <label class="block text-sm font-semibold text-stone-900"
+              >Skills (AI Field)</label
+            >
+            <div
+              class="bg-stone-50 rounded-lg p-3 sm:p-4 border-2 border-stone-200"
+            >
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                <label
+                  class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group py-1"
+                >
+                  <input
+                    type="checkbox"
+                    name="skills"
+                    value="Machine Learning"
+                    class="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-stone-300 text-stone-900 focus:ring-2 focus:ring-stone-900 focus:ring-offset-0 cursor-pointer transition-all"
+                  />
+                  <span
+                    class="text-xs sm:text-sm text-stone-700 group-hover:text-stone-900 transition-colors select-none"
+                    >Machine Learning</span
+                  >
+                </label>
+                <label
+                  class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group py-1"
+                >
+                  <input
+                    type="checkbox"
+                    name="skills"
+                    value="Deep Learning"
+                    class="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-stone-300 text-stone-900 focus:ring-2 focus:ring-stone-900 focus:ring-offset-0 cursor-pointer transition-all"
+                  />
+                  <span
+                    class="text-xs sm:text-sm text-stone-700 group-hover:text-stone-900 transition-colors select-none"
+                    >Deep Learning</span
+                  >
+                </label>
+                <label
+                  class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group py-1"
+                >
+                  <input
+                    type="checkbox"
+                    name="skills"
+                    value="Data Analysis"
+                    class="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-stone-300 text-stone-900 focus:ring-2 focus:ring-stone-900 focus:ring-offset-0 cursor-pointer transition-all"
+                  />
+                  <span
+                    class="text-xs sm:text-sm text-stone-700 group-hover:text-stone-900 transition-colors select-none"
+                    >Data Analysis</span
+                  >
+                </label>
+                <label
+                  class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group py-1"
+                >
+                  <input
+                    type="checkbox"
+                    name="skills"
+                    value="Natural Language Processing"
+                    class="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-stone-300 text-stone-900 focus:ring-2 focus:ring-stone-900 focus:ring-offset-0 cursor-pointer transition-all"
+                  />
+                  <span
+                    class="text-xs sm:text-sm text-stone-700 group-hover:text-stone-900 transition-colors select-none"
+                    >Natural Language Processing</span
+                  >
+                </label>
+                <label
+                  class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group py-1"
+                >
+                  <input
+                    type="checkbox"
+                    name="skills"
+                    value="Computer Vision"
+                    class="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-stone-300 text-stone-900 focus:ring-2 focus:ring-stone-900 focus:ring-offset-0 cursor-pointer transition-all"
+                  />
+                  <span
+                    class="text-xs sm:text-sm text-stone-700 group-hover:text-stone-900 transition-colors select-none"
+                    >Computer Vision</span
+                  >
+                </label>
+                <label
+                  class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group py-1"
+                >
+                  <input
+                    type="checkbox"
+                    name="skills"
+                    value="Python Programming"
+                    class="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-stone-300 text-stone-900 focus:ring-2 focus:ring-stone-900 focus:ring-offset-0 cursor-pointer transition-all"
+                  />
+                  <span
+                    class="text-xs sm:text-sm text-stone-700 group-hover:text-stone-900 transition-colors select-none"
+                    >Python Programming</span
+                  >
+                </label>
+                <label
+                  class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group py-1"
+                >
+                  <input
+                    type="checkbox"
+                    name="skills"
+                    value="Data Engineering"
+                    class="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-stone-300 text-stone-900 focus:ring-2 focus:ring-stone-900 focus:ring-offset-0 cursor-pointer transition-all"
+                  />
+                  <span
+                    class="text-xs sm:text-sm text-stone-700 group-hover:text-stone-900 transition-colors select-none"
+                    >Data Engineering</span
+                  >
+                </label>
+                <label
+                  class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group py-1"
+                >
+                  <input
+                    type="checkbox"
+                    name="skills"
+                    value="MLOps"
+                    class="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-stone-300 text-stone-900 focus:ring-2 focus:ring-stone-900 focus:ring-offset-0 cursor-pointer transition-all"
+                  />
+                  <span
+                    class="text-xs sm:text-sm text-stone-700 group-hover:text-stone-900 transition-colors select-none"
+                    >MLOps</span
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role Selection -->
+          <div class="space-y-2">
+            <label
+              for="role"
+              class="block text-sm font-semibold text-stone-900"
+            >
+              Select a Role
+            </label>
+            <select
+              id="role"
+              name="role"
+              required
+              class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border-2 border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-transparent transition-all duration-200 hover:border-stone-300 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%3E%3cpath%20d%3D%22M7%207l3%203%203-3%22%20stroke%3D%22%231c1917%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3c%2Fsvg%3E')] bg-[length:1.25rem] sm:bg-[length:1.5rem] bg-[center_right_0.75rem] sm:bg-[center_right_1rem] bg-no-repeat pr-10 sm:pr-12 text-stone-900"
+            >
+              <option value="" disabled selected class="text-stone-400">
+                Select a role
+              </option>
+              <option value="BI Engineer">BI Engineer</option>
+              <option value="Product Manager">Product Manager</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="Data Analyst">Data Analyst</option>
+              <option value="QA Engineer">QA Engineer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="Data Engineer">Data Engineer</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="DevOps Engineer">DevOps Engineer</option>
+              <option value="ML Engineer">ML Engineer</option>
+            </select>
+          </div>
+          <!-- Level and Degree - Two Column Layout -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <!-- Level -->
+            <div class="space-y-2">
+              <label
+                for="level"
+                class="block text-sm font-semibold text-stone-900"
+              >
+                Level
+              </label>
+              <select
+                id="level"
+                name="level"
+                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border-2 border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-transparent transition-all duration-200 hover:border-stone-300 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%3E%3cpath%20d%3D%22M7%207l3%203%203-3%22%20stroke%3D%22%231c1917%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3c%2Fsvg%3E')] bg-[length:1.25rem] sm:bg-[length:1.5rem] bg-[center_right_0.75rem] sm:bg-[center_right_1rem] bg-no-repeat pr-10 sm:pr-12 text-stone-900"
+                required
+              >
+                <option value="" disabled selected class="text-stone-400">
+                  Select a level
+                </option>
+                <option value="Intern">Intern</option>
+                <option value="Junior">Junior</option>
+                <option value="Mid">Mid</option>
+                <option value="Senior">Senior</option>
+                <option value="Lead">Lead</option>
+              </select>
+            </div>
+
+            <!-- Degree -->
+            <div class="space-y-2">
+              <label
+                for="degree"
+                class="block text-sm font-semibold text-stone-900"
+              >
+                Degree
+              </label>
+              <select
+                id="degree"
+                name="degree"
+                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border-2 border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-transparent transition-all duration-200 hover:border-stone-300 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%3E%3cpath%20d%3D%22M7%207l3%203%203-3%22%20stroke%3D%22%231c1917%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3c%2Fsvg%3E')] bg-[length:1.25rem] sm:bg-[length:1.5rem] bg-[center_right_0.75rem] sm:bg-[center_right_1rem] bg-no-repeat pr-10 sm:pr-12 text-stone-900"
+                required
+              >
+                <option value="" disabled selected class="text-stone-400">
+                  Select a degree
+                </option>
+                <option value="No Degree">No Degree</option>
+                <option value="Bachelors">Bachelors</option>
+                <option value="Masters">Masters</option>
+                <option value="Phd">PhD</option>
+              </select>
+            </div>
+          </div>
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full bg-gradient-to-r from-stone-900 to-stone-800 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-stone-800 hover:to-stone-700 focus:outline-none focus:ring-4 focus:ring-stone-900/50 transform hover:-translate-y-0.5 transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base"
+          >
+            <span id="btn-text">Submit Application →</span>
+            <span id="btn-loading" class="hidden">
+              <svg
+                class="inline-block animate-spin h-5 w-5 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Submitting...
+            </span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Footer Text -->
+      <p
+        class="text-center text-stone-500 text-xs sm:text-sm mt-6 sm:mt-8 max-w-md px-4"
+      >
+        All transactions are secure and encrypted. Your information will be
+        handled with strict confidentiality.
+      </p>
+    </div>
+    <script>
+      async function validateForm(e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById("submit-btn");
+        const btnText = document.getElementById("btn-text");
+        const btnLoading = document.getElementById("btn-loading");
+
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.classList.add("hidden");
+        btnLoading.classList.remove("hidden");
+
+        try {
+          const data = new FormData(e.target);
+          const formData = Object.fromEntries(data);
+
+          // Get all selected checkboxes as an array
+          const selectedSkills = data.getAll("skills");
+          formData.skills = selectedSkills;
+
+          const response = await fetch("/api/application", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+
+          if (response.ok) {
+            // Success notification with SweetAlert2
+            await Swal.fire({
+              icon: "success",
+              title: "Application Submitted!",
+              html: `
+                <div class="text-left">
+                  <p class="text-stone-600 mb-3">Thank you for applying! Your application has been successfully submitted.</p>
+                  <div class="bg-stone-50 rounded-lg p-4 text-sm">
+                    <p class="font-semibold text-stone-900 mb-2">What's next?</p>
+                    <ul class="space-y-1 text-stone-700">
+                      <li>✓ Our team will review your application</li>
+                      <li>✓ You'll receive an email confirmation shortly</li>
+                      <li>✓ We'll contact you within 3-5 business days</li>
+                    </ul>
+                  </div>
+                </div>
+              `,
+              confirmButtonText: "Great!",
+              confirmButtonColor: "#1c1917",
+              customClass: {
+                popup: "rounded-2xl",
+                confirmButton: "rounded-lg px-6 py-2.5",
+              },
+            });
+
+            // Reset form after success
+            e.target.reset();
+          } else {
+            // Error notification
+            const errorData = await response.json().catch(() => ({}));
+            Swal.fire({
+              icon: "error",
+              title: "Submission Failed",
+              text:
+                errorData.message ||
+                "Something went wrong. Please try again later.",
+              confirmButtonText: "OK",
+              confirmButtonColor: "#1c1917",
+              customClass: {
+                popup: "rounded-2xl",
+                confirmButton: "rounded-lg px-6 py-2.5",
+              },
+            });
+          }
+        } catch (error) {
+          // Network or other error
+          Swal.fire({
+            icon: "error",
+            title: "Connection Error",
+            text: "Unable to submit your application. Please check your internet connection and try again.",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#1c1917",
+            customClass: {
+              popup: "rounded-2xl",
+              confirmButton: "rounded-lg px-6 py-2.5",
+            },
+          });
+        } finally {
+          // Reset button state
+          submitBtn.disabled = false;
+          btnText.classList.remove("hidden");
+          btnLoading.classList.add("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>
