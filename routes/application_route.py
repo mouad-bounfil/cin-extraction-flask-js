@@ -7,22 +7,31 @@ db = get_db()
 
 # GET /api/application
 @application_route.route("/", methods=["GET"])
+@application_route.route("", methods=["GET"])
 def get_application():
     return jsonify({"message": "GET Application is running MOUAD✅"})
 
 
 # POST /api/application
 @application_route.route("/", methods=["POST"])
+@application_route.route("", methods=["POST"])
 def create_application():
     try:
         data = request.get_json()
-        print(data)
+
+        # Validate data exists
+        if not data:
+            return jsonify({"message": "No data provided"}), 400
+
+        print(f"Received application data: {data}")
         collection = db["applications"]
         result = collection.insert_one(data)
-        print(result)
+        print(f"Inserted with ID: {result.inserted_id}")
+
         data["_id"] = str(result.inserted_id)
         return jsonify(
             {"message": "Application created successfully ✅", "data": data}
         ), 201
     except Exception as e:
-        return jsonify({"message": f"Application creation failed: {e} ❌"}), 500
+        print(f"Error creating application: {str(e)}")
+        return jsonify({"message": f"Application creation failed: {str(e)} ❌"}), 500

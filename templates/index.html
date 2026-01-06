@@ -345,7 +345,7 @@
           const selectedSkills = data.getAll("skills");
           formData.skills = selectedSkills;
 
-          const response = await fetch("/api/application", {
+          const response = await fetch("/api/application/", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
